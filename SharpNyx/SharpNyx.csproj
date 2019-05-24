@@ -14,7 +14,7 @@
     <Summary>Telnyx API wrapper for .Net Core 2.1</Summary>
     <PackageTags>API, Telephony, Telnyx, SMS, Communication</PackageTags>
     <Title>SharpNyx</Title>
-    <Description>Telnyx API wrapper for c#.</Description>
+    <Description>C# Telnyx API wrapper for .Net Core 2.1.</Description>
     <PackageReleaseNotes>SharpNyx v 0.1
 
 Support for Telnyx messaging API.
