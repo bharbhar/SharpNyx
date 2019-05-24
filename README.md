@@ -25,7 +25,7 @@ bool isq = rc.IsQueued;
 //Print SMS Id generated from the response
 Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
 
-//rc.Message returns Queued if successful, returns the message if unsuccessful delivery
+//rc.Message returns "Message queued" if successful, returns the message if unsuccessful delivery
 Console.WriteLine(rc.Message);
 ```
 

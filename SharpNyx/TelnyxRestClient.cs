@@ -52,34 +52,26 @@ namespace Telnyx.SharpNyx
             //Try POST to Telnyx API
             try
             {
-                SetupClient();
+                ClientSetup();
 
                 FormUrlEncodedContent content = new FormUrlEncodedContent(values);
 
                 HttpResponseMessage response = await client.PostAsync(APIUrl, content);
 
-                //Check HTTP response code to make sure it is 200 as per Telnyx response
-                if ((int)response.StatusCode == 200)
-                {
-                    //Await for the response to finish
-                    ReponseString = await response.Content.ReadAsStringAsync();
+                //Await for the response to finish
+                ReponseString = await response.Content.ReadAsStringAsync();
 
-                    //Prase response into JSON object
-                    JObject o = JObject.Parse(ReponseString);
+                //Prase response into JSON object
+                JObject o = JObject.Parse(ReponseString);
 
-                    //Get the status from the response - status is returned for both failed and successful messages
-                    Status = (string)o["status"];
+                //Get the status from the response - status is returned for both failed and successful messages
+                Status = (string)o["status"];
 
-                    //Set IsQueued to true if Status is queueud
-                    IsQueued |= Status == "queued";
+                //Set IsQueued to true if Status is queueud
+                IsQueued |= Status == "queued";
 
-                    //Return our own message if it is not generated
-                    Message = (IsQueued) ?  "Message queued" : (string)o["message"];
-                }
-                else
-                {
-                    Status = response.StatusCode.ToString();
-                }
+                //Return our own message if it is not generated
+                Message = (IsQueued) ?  "Message queued" : (string)o["message"];
             }
             //Something wrong with the request
             catch (Exception x) 
@@ -88,7 +80,7 @@ namespace Telnyx.SharpNyx
             }
         }
 
-        private void SetupClient()
+        private void ClientSetup()
         {
             //Set header
             client.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
