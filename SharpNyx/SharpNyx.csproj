@@ -9,7 +9,7 @@
     <Copyright>2019 Bharat Bhardwaj</Copyright>
     <PackageIconUrl>https://telnyx.com/favicon.ico</PackageIconUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-    <Owners>Bugs Inc.</Owners>
+    <Owners>Bharat Bhardwaj</Owners>
     <PackageProjectUrl>https://github.com/bharbhar/SharpNyx</PackageProjectUrl>
     <Summary>Telnyx API wrapper for .Net Core 2.1</Summary>
     <PackageTags>API, Telephony, Telnyx, SMS, Communication</PackageTags>
@@ -24,6 +24,7 @@ Support for Telnyx messaging API.
 Rest connections via HttpClient.
 
 Json parsing via Newtonsoft.</PackageReleaseNotes>
+    <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
