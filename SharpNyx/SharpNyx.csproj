@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Telnyx</AssemblyName>
+    <PackageId>SharpNyx</PackageId>
+    <PackageVersion>0.1</PackageVersion>
+    <Authors>Bharat Bhardwaj</Authors>
+    <Copyright>2019 Bharat Bhardwaj</Copyright>
+    <PackageIconUrl>https://telnyx.com/favicon.ico</PackageIconUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Owners>Bugs Inc.</Owners>
+    <PackageProjectUrl>https://bugs.lol/sharpnyx</PackageProjectUrl>
+    <Summary>Telnyx API wrapper for .Net Core 2.1</Summary>
+    <PackageTags>API, Telephony, Telnyx, SMS, Communication</PackageTags>
+    <Title>SharpNyx</Title>
+    <Description>Telnyx API wrapper for c#.</Description>
+    <PackageReleaseNotes>SharpNyx v 0.1
+
+Support for Telnyx messaging API.
+-Supports all published functions for sending messages.
+-Objects for error response, and successful payload response.
+
+Rest connections via HttpClient.
+
+Json parsing via Newtonsoft.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+  </ItemGroup>
+</Project>
