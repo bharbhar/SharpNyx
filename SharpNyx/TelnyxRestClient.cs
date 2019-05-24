@@ -1,4 +1,4 @@
-﻿//Bharat Bhardwaj 2019
+﻿//2019 Bharat Bhardwaj Bugs Inc. of California
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -61,7 +61,7 @@ namespace Telnyx.SharpNyx
                 //Await for the response to finish
                 ReponseString = await response.Content.ReadAsStringAsync();
 
-                //Prase response into JSON object
+                //Parse response into JSON object
                 JObject o = JObject.Parse(ReponseString);
 
                 //Get the status from the response - status is returned for both failed and successful messages

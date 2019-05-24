@@ -1,5 +1,5 @@
 # SharpNyx
-Telnyx API C# wrapper for .Net Core.
+Telnyx API C# wrapper for .Net Core. Uses  HttpClient.
 
 ### Dependencies
 * .NETCoreApp 2.1
@@ -16,7 +16,7 @@ using Telnyx.SharpNyx;
 //Quick instantiation
 TelnyxRestClient trc = new TelnyxRestClient("PnuROvNNFSMvHStXdBGzgoR9", "+16508976777", "+16506003337", "Hello Telnyx");
 
-//Call and wait for Async method to finish
+//Call and wait for SendSMS to finish
 rc.SendSMSAsync().Wait();
 
 //Check to see if it is queued
