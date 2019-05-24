@@ -9,7 +9,7 @@ Telnyx API C# wrapper for .Net Core.
 You can add the NuGet package or download and reference the Telnyx.dll issued in Releases.
 
 ### Usage
-### Sending a message
+#### Send a message
 ```csharp
 using Telnyx.SharpNyx;
 
@@ -29,7 +29,7 @@ Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
 Console.WriteLine(rc.Message);
 ```
 
-### Response Payload
+#### Response Payload
 ```csharp
 //Get the full response payload on a successful message
 ResponsePayload rpl = ResponsePayload.FromJson(rc.ReponseString);
