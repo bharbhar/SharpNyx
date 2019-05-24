@@ -32,7 +32,7 @@ string responsemessage = rc.Message;
 ResponsePayload rpl = ResponsePayload.FromJson(rc.ReponseString);
 
 //Print SMS Id generated from the response
-DateTime smstime = ResponsePayload.FromJson(rc.ReponseString).DateCreated;
+DateTime smstime = rpl.DateCreated;
 ```
 
 
