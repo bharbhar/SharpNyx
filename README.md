@@ -9,8 +9,8 @@ Telnyx API C# wrapper for .Net Core.
 You can add the NuGet package or download and reference the Telnyx.dll issued in Releases.
 
 ### Usage
+#### Send a message
 ```csharp
-//Sample code to send message
 using Telnyx.SharpNyx;
 
 
