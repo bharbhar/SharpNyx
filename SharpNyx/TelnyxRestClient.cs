@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Copyright Bharat Bhardwaj 2019
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
