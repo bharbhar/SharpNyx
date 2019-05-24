@@ -1,5 +1,5 @@
 # SharpNyx
-##C# wrapper for Telnyx API
+## C# wrapper for Telnyx API
 
 ```csharp
 //Sample code to send message
