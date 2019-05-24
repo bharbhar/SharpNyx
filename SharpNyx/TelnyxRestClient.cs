@@ -77,10 +77,12 @@ namespace Telnyx.SharpNyx
             //Add values to a dictionary for pipelineing into the FormUrlEncodedContent
             values = new Dictionary<string, string>
             {
-               { "from", msg.FromPhoneNumber },
                { "to", msg.ToPhoneNumber },
                { "body", msg.Body }
             };
+
+            //This field is optional if Number Pool feature is enabled.
+            if (msg.FromPhoneNumber != null) values.Add("from", msg.FromPhoneNumber);
 
             //Add delivery_status_webhook_url to the values if it is specified
             if (msg.DeliveryStatusWebhookUrl != null) values.Add("delivery_status_webhook_url", msg.DeliveryStatusWebhookUrl);
