@@ -10,7 +10,7 @@
     <PackageIconUrl>https://telnyx.com/favicon.ico</PackageIconUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <Owners>Bugs Inc.</Owners>
-    <PackageProjectUrl>https://bugs.lol/sharpnyx</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/bharbhar/SharpNyx</PackageProjectUrl>
     <Summary>Telnyx API wrapper for .Net Core 2.1</Summary>
     <PackageTags>API, Telephony, Telnyx, SMS, Communication</PackageTags>
     <Title>SharpNyx</Title>
