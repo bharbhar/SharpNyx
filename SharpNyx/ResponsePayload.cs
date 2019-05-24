@@ -17,7 +17,7 @@ namespace Telnyx.SharpNyx
         [JsonProperty("delivery_status")]
         public string DeliveryStatus { get; set; }
         [JsonProperty("msg")]
-        public TelnyxMessage Message { get; set; }
+        public ResponsePayloadMessage Message { get; set; }
         [JsonProperty("Coding")]
         public int Coding { get; set; }
         [JsonProperty("parts")]
@@ -39,5 +39,15 @@ namespace Telnyx.SharpNyx
         {
             return JsonConvert.DeserializeObject<ResponsePayload>(json);
         }
+    }
+
+    public class ResponsePayloadMessage
+    {
+        [JsonProperty("src")]
+        public string Source { get; set; }
+        [JsonProperty("dst")]
+        public string Destination { get; set; }
+        [JsonProperty("body")]
+        public string Body { get; set; }
     }
 }
