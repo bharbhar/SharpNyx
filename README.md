@@ -1,6 +1,7 @@
 # SharpNyx
 C# wrapper for Telnyx API
 
+```
 //Sample code to send message
 using Telnyx.SharpNyx;
 
@@ -10,3 +11,7 @@ TelnyxRestClient rc = new TelnyxRestClient("PnuROvNNFSMvHStXdBGzgoR9", "+1650897
 rc.SendSMSAsync().Wait();
 
 Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
+```
+
+
+Copyright Bharat Bhardwaj
