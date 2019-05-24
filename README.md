@@ -1,5 +1,5 @@
 # SharpNyx
-Telnyx API C# wrapper .Net Core 2.1.
+Telnyx API C# wrapper for .Net Core 2.1.
 
 ### Usage
 ```csharp
@@ -14,5 +14,5 @@ rc.SendSMSAsync().Wait();
 Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
 ```
 
-
-Copyright 2019 Bharat Bhardwaj
+MIT License
+2019 Bharat Bhardwaj
