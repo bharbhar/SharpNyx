@@ -23,7 +23,7 @@ rc.SendSMSAsync(new Message("+16508976777", "+16506003337", "Hello Telnyx")).Wai
 bool isq = rc.IsQueued;
 
 //rc.Message returns "Message queued" if successful, returns the message if unsuccessful delivery
-Console.WriteLine(rc.Message);
+string responsemessage = rc.Message;
 ```
 
 #### Response Payload
@@ -32,7 +32,7 @@ Console.WriteLine(rc.Message);
 ResponsePayload rpl = ResponsePayload.FromJson(rc.ReponseString);
 
 //Print SMS Id generated from the response
-Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
+DateTime smstime = ResponsePayload.FromJson(rc.ReponseString).DateCreated;
 ```
 
 
