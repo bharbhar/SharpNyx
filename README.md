@@ -1,5 +1,12 @@
 # SharpNyx
-Telnyx API C# wrapper for .Net Core 2.1.
+Telnyx API C# wrapper for .Net Core.
+
+### Dependencies
+.NETCoreApp 2.1
+Newtonsoft.Json (>= 12.0.2)
+
+### Installation
+You can add the NuGet package or download and reference the Telnyx.dll issued in Releases.
 
 ### Usage
 ```csharp
