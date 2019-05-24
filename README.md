@@ -17,7 +17,7 @@ using Telnyx.SharpNyx;
 TelnyxRestClient rc = new TelnyxRestClient("Q7EI8KGZJ3FrwBxMKq5zmID1");
 
 //Call and wait for SendSMS to finish
-rc.SendSMSAsync(new Message("+16508976777", "+13109755054", body)).Wait();
+rc.SendSMSAsync(new Message("+16508976777", "+16506003337", "Hello Telnyx")).Wait();
 
 //Check to see if it is queued
 bool isq = rc.IsQueued;
