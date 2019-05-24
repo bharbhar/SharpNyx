@@ -1,6 +1,8 @@
 # SharpNyx
 ## C# wrapper for Telnyx API
+This is an unofficial repository for C# .Net Core 2.1.
 
+### Usage
 ```csharp
 //Sample code to send message
 using Telnyx.SharpNyx;
