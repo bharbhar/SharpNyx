@@ -22,9 +22,6 @@ rc.SendSMSAsync(new Message("+16508976777", "+16506003337", "Hello Telnyx")).Wai
 //Check to see if it is queued
 bool isq = rc.IsQueued;
 
-//Print SMS Id generated from the response
-Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
-
 //rc.Message returns "Message queued" if successful, returns the message if unsuccessful delivery
 Console.WriteLine(rc.Message);
 ```
@@ -33,6 +30,9 @@ Console.WriteLine(rc.Message);
 ```csharp
 //Get the full response payload on a successful message
 ResponsePayload rpl = ResponsePayload.FromJson(rc.ReponseString);
+
+//Print SMS Id generated from the response
+Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
 ```
 
 
