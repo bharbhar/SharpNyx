@@ -1,7 +1,7 @@
 # SharpNyx
-C# wrapper for Telnyx API
+##C# wrapper for Telnyx API
 
-```
+```csharp
 //Sample code to send message
 using Telnyx.SharpNyx;
 
@@ -14,4 +14,4 @@ Console.WriteLine(ResponsePayload.FromJson(rc.ReponseString).SMSId);
 ```
 
 
-Copyright Bharat Bhardwaj
+Copyright 2019 Bharat Bhardwaj
