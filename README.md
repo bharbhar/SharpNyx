@@ -7,7 +7,7 @@ Telnyx API C# wrapper for .Net Core 2.1.
 using Telnyx.SharpNyx;
 
 
-TelnyxRestClient rc = new TelnyxRestClient("PnuROvNNFSMvHStXdBGzgoR9", "+16508976777", "+16506003337", "Hello Telnyx");
+TelnyxRestClient trc = new TelnyxRestClient("PnuROvNNFSMvHStXdBGzgoR9", "+16508976777", "+16506003337", "Hello Telnyx");
 
 rc.SendSMSAsync().Wait();
 
