@@ -22,6 +22,7 @@ namespace Telnyx.SharpNyx
 
         private readonly string TelnyxAPIUrl = "https://sms.telnyx.com/messages";
 
+        public HttpResponseMessage HttpResponse { get; internal set; }
         public bool IsQueued = false;
 
         public TelnyxRestClient()
@@ -41,12 +42,10 @@ namespace Telnyx.SharpNyx
             //Try POST to Telnyx API
             try
             {
-                FormUrlEncodedContent content = new FormUrlEncodedContent(msg.MessageClientDictionary());
-
-                HttpResponseMessage response = await client.PostAsync(TelnyxAPIUrl, content);
+                HttpResponse = await client.PostAsync(TelnyxAPIUrl, new FormUrlEncodedContent(msg.MessageClientDictionary()));
 
                 //Await for the response to finish
-                ReponseString = await response.Content.ReadAsStringAsync();
+                ReponseString = await HttpResponse.Content.ReadAsStringAsync();
 
                 //Parse response into JSON object
                 JObject o = JObject.Parse(ReponseString);
