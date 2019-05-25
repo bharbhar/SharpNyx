@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
-
 namespace Telnyx.SharpNyx
 {
     public class TelnyxRestClient
@@ -23,8 +22,6 @@ namespace Telnyx.SharpNyx
 
         private readonly string TelnyxAPIUrl = "https://sms.telnyx.com/messages";
 
-        private static Dictionary<string, string> values;
-
         public bool IsQueued = false;
 
         public TelnyxRestClient()
@@ -34,6 +31,9 @@ namespace Telnyx.SharpNyx
         public TelnyxRestClient(string XProfileSecret)
         {
             this.XProfileSecret = XProfileSecret;
+
+            //Add secret to client header
+            client.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
         }
 
         public async System.Threading.Tasks.Task SendSMSAsync(Message msg)
@@ -41,9 +41,7 @@ namespace Telnyx.SharpNyx
             //Try POST to Telnyx API
             try
             {
-                MessageClientSetup(msg);
-
-                FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+                FormUrlEncodedContent content = new FormUrlEncodedContent(msg.MessageClientDictionary());
 
                 HttpResponseMessage response = await client.PostAsync(TelnyxAPIUrl, content);
 
@@ -67,31 +65,6 @@ namespace Telnyx.SharpNyx
             { 
                 throw x;
             }
-        }
-
-        private void MessageClientSetup(Message msg)
-        {
-            //Set header
-            client.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
-
-            //Add values to a dictionary for pipelineing into the FormUrlEncodedContent
-            values = new Dictionary<string, string>
-            {
-               { "to", msg.ToPhoneNumber },
-               { "body", msg.Body }
-            };
-
-            //This field is optional if Number Pool feature is enabled.
-            if (msg.FromPhoneNumber != null) values.Add("from", msg.FromPhoneNumber);
-
-            //Add delivery_status_webhook_url to the values if it is specified
-            if (msg.DeliveryStatusWebhookUrl != null) values.Add("delivery_status_webhook_url", msg.DeliveryStatusWebhookUrl);
-
-            //Add delivery_status_failover_url to the values if it is specified
-            if (msg.DeliveryStatusFailoverUrl != null) values.Add("delivery_status_failover_url", msg.DeliveryStatusFailoverUrl);
-
-            //Add check_sender_health to the values if it is specified
-            if (msg.CheckSenderHealth) values.Add("check_sender_health", "true");
         }
     }
 }
