@@ -19,6 +19,9 @@ TelnyxRestClient rc = new TelnyxRestClient("Q7EI8KGZJ3FrwBxMKq5zmID1");
 //Call and wait for SendSMS to finish
 rc.SendSMSAsync(new Message("+16508976777", "+16506003337", "Hello Telnyx")).Wait();
 
+//Get the full Http response from the API call
+string httpstatus = rc.HttpResponse.StatusCode.ToString(); //returns OK
+
 //Check to see if it is queued
 bool isq = rc.IsQueued;
 
@@ -30,9 +33,6 @@ string responsemessage = rc.Message;
 ```csharp
 //Get the full response payload on a successful message
 ResponsePayload rpl = ResponsePayload.FromJson(rc.ReponseString);
-
-//Print SMS Id generated from the response
-DateTime smstime = rpl.DateCreated;
 ```
 
 
