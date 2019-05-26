@@ -41,7 +41,7 @@ namespace Telnyx.SharpNyx
             //Try POST to Telnyx API
             try
             {
-                //Add secret to client header every time before sending
+                //Add x-profile-secret to client header every time before sending
                 httpClient.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
 
                 //Make Http call get response
