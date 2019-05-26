@@ -1,24 +1,26 @@
 ﻿//2019 Bharat Bhardwaj Bugs Inc. of California
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 namespace Telnyx.SharpNyx
 {
+    /// <summary>
+    /// The TelnyxRestClient (TRC) 
+    /// </summary>
     public class TelnyxRestClient
     {
-        //It is recommended to instantiate one HttpClient for your application's lifetime and share it.
-        private static readonly HttpClient client = new HttpClient();
+        //One client per application instance
+        private static readonly HttpClient httpClient = new HttpClient();
 
         /// <summary>
         /// Account XProfileSecret found in Message Profiles
         /// </summary>
         public string XProfileSecret { get; set; }
 
-        //Response is null untill SendSMSAsync is called. Response fills whether returns true or fallse.
+        //Response is null until SendSMSAsync is called. Response fills whether returns true or false.
         public string ReponseString { get; internal set; }
-        public string Status { get; internal set; }
-        public string Message { get; internal set; }
+        public string ReponseStatus { get; internal set; }
+        public string ReponseMessage { get; internal set; }
 
         private readonly string TelnyxAPIUrl = "https://sms.telnyx.com/messages";
 
@@ -32,9 +34,6 @@ namespace Telnyx.SharpNyx
         public TelnyxRestClient(string XProfileSecret)
         {
             this.XProfileSecret = XProfileSecret;
-
-            //Add secret to client header
-            client.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
         }
 
         public async System.Threading.Tasks.Task SendSMSAsync(Message msg)
@@ -42,7 +41,11 @@ namespace Telnyx.SharpNyx
             //Try POST to Telnyx API
             try
             {
-                HttpResponse = await client.PostAsync(TelnyxAPIUrl, new FormUrlEncodedContent(msg.MessageClientDictionary()));
+                //Add secret to client header every time before sending
+                httpClient.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
+
+                //Make Http call get response
+                HttpResponse = await httpClient.PostAsync(TelnyxAPIUrl, new FormUrlEncodedContent(msg.MessageClientDictionary()));
 
                 //Await for the response to finish
                 ReponseString = await HttpResponse.Content.ReadAsStringAsync();
@@ -51,17 +54,17 @@ namespace Telnyx.SharpNyx
                 JObject o = JObject.Parse(ReponseString);
 
                 //Get the status from the response - status is returned for both failed and successful messages
-                Status = (string)o["status"];
+                ReponseStatus = (string)o["status"];
 
                 //Set IsQueued to true if Status is queueud
-                IsQueued |= Status == "queued";
+                IsQueued |= ReponseStatus == "queued";
 
                 //Return our own message if it is not generated
-                Message = (IsQueued) ?  "Message queued" : (string)o["message"];
+                ReponseMessage = (IsQueued) ? "Message queued" : (string)o["message"];
             }
             //Something wrong with the request
-            catch (Exception x) 
-            { 
+            catch (Exception x)
+            {
                 throw x;
             }
         }

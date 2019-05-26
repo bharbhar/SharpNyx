@@ -17,7 +17,7 @@ namespace Telnyx.SharpNyx
         [JsonProperty("delivery_status")]
         public string DeliveryStatus { get; set; }
         [JsonProperty("msg")]
-        public ResponsePayloadMessage Message { get; set; }
+        public OutgoingMessageReturn Message { get; set; }
         [JsonProperty("Coding")]
         public int Coding { get; set; }
         [JsonProperty("parts")]
@@ -35,13 +35,13 @@ namespace Telnyx.SharpNyx
         [JsonProperty("delivery_status_failover_url")]
         public string DeliveryStatusFailoverUrl { get; set; }
 
-        public static ResponsePayload FromJson(string json)
+        public static ResponsePayload FromJson(string jSon)
         {
-            return JsonConvert.DeserializeObject<ResponsePayload>(json);
+            return JsonConvert.DeserializeObject<ResponsePayload>(jSon);
         }
     }
 
-    public class ResponsePayloadMessage
+    public class OutgoingMessageReturn
     {
         [JsonProperty("src")]
         public string Source { get; set; }

@@ -14,9 +14,9 @@ namespace Telnyx.SharpNyx
         [JsonProperty("url")]
         public string Url { get; set; }
 
-        public static ResponseError FromJson(string json)
+        public static ResponseError FromJson(string jSon)
         {
-            return JsonConvert.DeserializeObject<ResponseError>(json);
+            return JsonConvert.DeserializeObject<ResponseError>(jSon);
         }
     }
 }
