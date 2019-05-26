@@ -36,12 +36,14 @@ string responsemessage = trc.Message;
 ```csharp
 //Get the full response payload on a successful message
 ResponsePayload rpl = ResponsePayload.FromJson(trc.ReponseString);
+string smsid = rpl.SMSId; //Generated message ID from Telnyx
 ```
 
 #### Response Error
 ```csharp
 //Get the response error details from the TRC response string if message is not queued
-ResponseError rpl = ResponseError.FromJson(trc.ReponseString);
+ResponseError err = ResponseError.FromJson(trc.ReponseString);
+string errormessage = err.Message;
 ```
 
 #### Outgoing Message Can be generated without specifying a source
