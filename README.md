@@ -23,7 +23,7 @@ TelnyxRestClient trc = new TelnyxRestClient("Q7EI8KGZJ3FrwBxMKq5zmID1");
 trc.SendSMSAsync(new Message("BUGSINC", "+16506003337", "Hello Telnyx")).Wait();
 
 //Get the full Http response from the API call
-string httpstatus = trc.HttpResponse.StatusCode.ToString(); //returns OK
+string httpstatus = trc.HttpResponse.StatusCode.ToString(); //returns OK for 200
 
 //Check to see if it is queued
 bool isq = trc.IsQueued;
