@@ -14,7 +14,7 @@ https://www.nuget.org/packages/SharpNyx
 ### Usage
 #### Send a message
 ```csharp
-//Import, refe  rence, Use
+//Import
 using Telnyx.SharpNyx;
 
 //Quick instantiation
