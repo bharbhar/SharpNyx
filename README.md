@@ -46,21 +46,33 @@ string responsemessage = mac.ReponseStatus;
 //Reponse Message returns "Queued" if successful, returns the message if unsuccessful delivery
 string responsemessage = mac.ReponseMessage;
 ```
-#### Send MMS
+
+#### SMS
+```csharp
+//Send a message with just the recipient and body
+Message msg = new Message();
+msg.ToPhoneNumber = "+16506003337";
+msg.Body = "Hello Telnyx";
+```
+
+#### Send Quick MMS
 ```csharp
 //Quickly send one image without subject
-MessagingAPIClient trc = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
+MessagingAPIClient mac = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
 
 string url = "https://nssdc.gsfc.nasa.gov/planetary/image/saturn.jpg";
 
 MMS mms = new MMS("+BUGSINC", "+16508976777", new Dictionary<string, string> { { MediaUtype.Image, url } });
 
-trc.SendMMSAsync(mms).Wait();
+mac.SendMMSAsync(mms).Wait();
 
 return mms.IsQueued;
+```
 
+#### MMS With Two Images
+```csharp
 //Send two images with a subject
-MessagingAPIClient trc = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
+MessagingAPIClient mac = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
 
 string url1 = "https://upload.wikimedia.org/wikipedia/commons/5/5f/HubbleDeepField.800px.jpg";
 string url2 = "https://upload.wikimedia.org/wikipedia/commons/e/e1/M45map.jpg";
@@ -78,7 +90,7 @@ MMS mms = new MMS()
     ToPhoneNumber = "+16508976777",
     MediaUrls = new List<Dictionary<string, string>>() { dic, dic2 }
 };
-trc.SendMMSAsync(mms).Wait();
+mac.SendMMSAsync(mms).Wait();
 return mms.IsQueued;
 ```
 
@@ -94,14 +106,6 @@ string smsid = arp.SMSId; //Generated message ID from Telnyx
 //Get the response error details from the mac response string if message is not queued
 RejectedResponsePayload rrp = RejectedResponsePayload.FromJson(mac.ReponseString);
 string errormessage = err.Message;
-```
-
-#### Outgoing message can be generated without specifying a source
-```csharp
-//Send a message with just the recipient and body
-Message msg = new Message();
-msg.ToPhoneNumber = "+16506003337";
-msg.Body = "Hello Telnyx";
 ```
 
 
