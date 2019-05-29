@@ -14,26 +14,27 @@ https://www.nuget.org/packages/SharpNyx
 ### Usage
 #### Send a message
 ```csharp
+//Import, reference, Use
 using Telnyx.SharpNyx;
 
 //Quick instantiation
 MessagingAPIClient mac = new MessagingAPIClient("Q7EI8KGZJ3FrwBxMKq5zmID1");
 
-//Make a new message
-Message msg = new Message("BUGSINC", "+16506003337", "Hello Telnyx");
+//Make a new SMS message
+SMS sms = new SMS("BUGSINC", "+16506003337", "Hello Telnyx");
 
 //Call and wait for SendSMS to finish
-mac.SendSMSAsync(msg).Wait();
+mac.SendSMSAsync(sms).Wait();
 
 //Check to see if it is queued
-bool isq = msg.IsQueued;
+bool isq = sms.IsQueued;
 ```
-#### The Messaging API Client (mac)
-Mac is the main broker for the HttpClient. mac does the work of sending messages, and communicating with the Telnyx Rest API.
+#### The Messaging API Client (MAC)
+MAC is the main broker for the HttpClient. MAC does the work of sending messages, and communicating with the Telnyx Rest API.
 
-Mac implements a static HttpClient to use for the entire application. You can instantiate the MessagingAPIClient by directly adding the x-secret.
+MAC implements a static HttpClient to use for the entire application. You can instantiate the MessagingAPIClient by directly adding the x-secret.
 
-The mac will add the secret to the header every time a new request is made. So you can change the secret for the same instance.
+The MAC will add the secret to the header every time a new request is made. So you can change the secret for the same instance.
 
 ```csharp
 //Get the full Http response from the API call
@@ -44,6 +45,41 @@ string responsemessage = mac.ReponseStatus;
 
 //Reponse Message returns "Queued" if successful, returns the message if unsuccessful delivery
 string responsemessage = mac.ReponseMessage;
+```
+#### Send MMS
+```csharp
+//Quickly send one image without subject
+MessagingAPIClient trc = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
+
+string url = "https://nssdc.gsfc.nasa.gov/planetary/image/saturn.jpg";
+
+MMS mms = new MMS("+BUGSINC", "+16508976777", new Dictionary<string, string> { { MediaUtype.Image, url } });
+
+trc.SendMMSAsync(mms).Wait();
+
+return mms.IsQueued;
+
+//Send two images with a subject
+MessagingAPIClient trc = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
+
+string url1 = "https://upload.wikimedia.org/wikipedia/commons/5/5f/HubbleDeepField.800px.jpg";
+string url2 = "https://upload.wikimedia.org/wikipedia/commons/e/e1/M45map.jpg";
+
+Dictionary<string, string> dic = new Dictionary<string, string>();
+dic.Add(MediaUtype.Image, url1);
+
+Dictionary<string, string> dic2 = new Dictionary<string, string>();
+dic2.Add(MediaUtype.Image, url2);
+
+MMS mms = new MMS()
+{
+    FromPhoneNumber = "+BUGSINC",
+    Subject = "Alcyone",
+    ToPhoneNumber = "+16508976777",
+    MediaUrls = new List<Dictionary<string, string>>() { dic, dic2 }
+};
+trc.SendMMSAsync(mms).Wait();
+return mms.IsQueued;
 ```
 
 #### Accepted Response Payload
@@ -60,7 +96,7 @@ RejectedResponsePayload rrp = RejectedResponsePayload.FromJson(mac.ReponseString
 string errormessage = err.Message;
 ```
 
-#### Outgoing Message Can be generated without specifying a source
+#### Outgoing message can be generated without specifying a source
 ```csharp
 //Send a message with just the recipient and body
 Message msg = new Message();

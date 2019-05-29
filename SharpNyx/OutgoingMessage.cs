@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 namespace Telnyx.SharpNyx
 {
@@ -51,6 +50,8 @@ namespace Telnyx.SharpNyx
     {
         [JsonProperty("media_urls")]
         public IEnumerable<IDictionary<string, string>> MediaUrls { get; set; }
+        [JsonProperty("subject")]
+        public string Subject { get; set; } // SMS only field
 
         public MMS() { }
 
