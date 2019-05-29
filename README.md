@@ -14,7 +14,7 @@ https://www.nuget.org/packages/SharpNyx
 ### Usage
 #### Send a message
 ```csharp
-//Import, reference, Use
+//Import, refe  rence, Use
 using Telnyx.SharpNyx;
 
 //Quick instantiation
@@ -77,7 +77,7 @@ MessagingAPIClient mac = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
 string url1 = "https://upload.wikimedia.org/wikipedia/commons/5/5f/HubbleDeepField.800px.jpg";
 string url2 = "https://upload.wikimedia.org/wikipedia/commons/e/e1/M45map.jpg";
 
-Dictionary<string, string> dic = new Dictionary<string, string>();
+Dictionary<string, string> dic1 = new Dictionary<string, string>();
 dic.Add(MediaUtype.Image, url1);
 
 Dictionary<string, string> dic2 = new Dictionary<string, string>();
@@ -88,9 +88,11 @@ MMS mms = new MMS()
     FromPhoneNumber = "+BUGSINC",
     Subject = "Alcyone",
     ToPhoneNumber = "+16508976777",
-    MediaUrls = new List<Dictionary<string, string>>() { dic, dic2 }
+    MediaUrls = new List<Dictionary<string, string>>() { dic1, dic2 }
 };
+
 mac.SendMMSAsync(mms).Wait();
+
 return mms.IsQueued;
 ```
 
