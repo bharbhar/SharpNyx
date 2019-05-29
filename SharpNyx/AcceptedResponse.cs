@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 namespace Telnyx.SharpNyx
 {
-    public class ResponsePayload
+    public class AcceptedResponsePayload
     {
         [JsonProperty("sms_id")]
         public string SMSId { get; set; }
@@ -35,9 +35,9 @@ namespace Telnyx.SharpNyx
         [JsonProperty("delivery_status_failover_url")]
         public string DeliveryStatusFailoverUrl { get; set; }
 
-        public static ResponsePayload FromJson(string jSon)
+        public static AcceptedResponsePayload FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<ResponsePayload>(jSon);
+            return JsonConvert.DeserializeObject<AcceptedResponsePayload>(json);
         }
     }
 

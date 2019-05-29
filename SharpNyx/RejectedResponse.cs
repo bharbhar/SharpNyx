@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 namespace Telnyx.SharpNyx
 {
-    public class ResponseError
+    public class RejectedResponsePayload
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -14,9 +14,9 @@ namespace Telnyx.SharpNyx
         [JsonProperty("url")]
         public string Url { get; set; }
 
-        public static ResponseError FromJson(string jSon)
+        public static RejectedResponsePayload FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<ResponseError>(jSon);
+            return JsonConvert.DeserializeObject<RejectedResponsePayload>(json);
         }
     }
 }
