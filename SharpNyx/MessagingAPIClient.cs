@@ -26,6 +26,7 @@ namespace Telnyx.SharpNyx
         public MessagingAPIClient()
         {
         }
+
         public MessagingAPIClient(string XProfileSecret)
         {
             this.XProfileSecret = XProfileSecret;
