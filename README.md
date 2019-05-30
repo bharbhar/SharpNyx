@@ -110,6 +110,13 @@ RejectedResponsePayload rrp = RejectedResponsePayload.FromJson(mac.ReponseString
 string errormessage = err.Message;
 ```
 
+#### Rejected Response Payload
+```csharp
+//Get the Master Detail Record for a message
+MasterDetailRecord mdr = await trc.GetMasterDetailRecord(msgid);
+return mdr;
+```
+
 
 MIT License
 2019 Bharat Bhardwaj
