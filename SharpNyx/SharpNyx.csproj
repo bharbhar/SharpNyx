@@ -15,32 +15,13 @@
     <PackageTags>API, Telephony, Telnyx, SMS, Communication</PackageTags>
     <Title>SharpNyx</Title>
     <Description>C# Telnyx API wrapper for .Net Core 2.1.</Description>
-    <PackageReleaseNotes>SharpNyx v 0.2.0
--MessagingAPIClient
--MMS, and SMS
--JSON POST instead of FormDictionary
+    <PackageReleaseNotes>SharpNyx v0.2.1
+-MasterDetailRecord
+-InboundMessage
 
--Add secret to client header every time before sending.
--Code cleanup.
+Async Task method GetMasterDetailRecord(string) takes in the sms_id and returns the Master Detail Record for that message.
 
--Exposed HttpResponse.
-
--Code changes. No upstream changes required.
-
--From field made optional. But simple instantiator still requires From field, so no upstream changes required.
-
--Simpler client setup. Create messages using a different class instead of the client itself.
-
--Removed Http status code checks
-
-Support for Telnyx messaging API.
-
--Supports all published functions for sending messages.
--Objects for error response, and successful payload response.
-
-Rest connections via HttpClient.
-
-Json parsing via Newtonsoft.</PackageReleaseNotes>
+Inbound message objects have been added so you can diretctly consume them via Json.</PackageReleaseNotes>
     <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
 

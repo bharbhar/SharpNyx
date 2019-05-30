@@ -74,5 +74,28 @@ namespace Telnyx.SharpNyx
                 throw x;
             }
         }
+
+        public async System.Threading.Tasks.Task<MasterDetailRecord> GetMasterDetailRecord(string msgid)
+        {
+            //Try Get MDR
+            try
+            {
+                //Add x-profile-secret to client header every time before sending
+                httpClient.DefaultRequestHeaders.Add("x-profile-secret", XProfileSecret);
+
+                //Make Http call get response
+                HttpResponse = await httpClient.GetAsync(TelnyxAPIUrl+"/"+msgid);
+
+                //Await for the response to finish
+                ReponseString = await HttpResponse.Content.ReadAsStringAsync();
+
+                return MasterDetailRecord.FromJson(ReponseString);
+            }
+            //Something wrong with the request
+            catch (Exception x)
+            {
+                throw x;
+            }
+        }
     }
 }
