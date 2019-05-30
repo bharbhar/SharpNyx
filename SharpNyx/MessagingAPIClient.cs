@@ -75,7 +75,7 @@ namespace Telnyx.SharpNyx
             }
         }
 
-        public async System.Threading.Tasks.Task<MasterDetailRecord> GetMasterDetailRecord(string msgid)
+        public async System.Threading.Tasks.Task<MessageDeliveryRecord> GetMessageDeliveryRecord(string msgid)
         {
             //Try Get MDR
             try
@@ -89,7 +89,7 @@ namespace Telnyx.SharpNyx
                 //Await for the response to finish
                 ReponseString = await HttpResponse.Content.ReadAsStringAsync();
 
-                return MasterDetailRecord.FromJson(ReponseString);
+                return MessageDeliveryRecord.FromJson(ReponseString);
             }
             //Something wrong with the request
             catch (Exception x)

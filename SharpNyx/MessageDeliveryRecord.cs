@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 namespace Telnyx.SharpNyx
 {
-    public class MasterDetailRecord
+    public class MessageDeliveryRecord
     {
         [JsonProperty("sms_id")]
         public string SMSId { get; set; }
@@ -45,9 +45,9 @@ namespace Telnyx.SharpNyx
         [JsonProperty("line_type")]
         public string LineType { get; set; }
 
-        public static MasterDetailRecord FromJson(string json)
+        public static MessageDeliveryRecord FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<MasterDetailRecord>(json);
+            return JsonConvert.DeserializeObject<MessageDeliveryRecord>(json);
         }
     }
 
