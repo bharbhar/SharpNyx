@@ -29,23 +29,6 @@ mac.SendSMSAsync(sms).Wait();
 //Check to see if it is queued
 bool isq = sms.IsQueued;
 ```
-#### The Messaging API Client (MAC)
-MAC is the main broker for the HttpClient. MAC does the work of sending messages, and communicating with the Telnyx Rest API.
-
-MAC implements a static HttpClient to use for the entire application. You can instantiate the MessagingAPIClient by directly adding the x-secret.
-
-The MAC will add the secret to the header every time a new request is made. So you can change the secret for the same instance.
-
-```csharp
-//Get the full Http response from the API call
-string httpstatus = mac.HttpResponse.StatusCode.ToString(); //returns OK for 200
-
-//Reponse Status returns the status. This field is used to determine the Message.IsQueued value.
-string responsemessage = mac.ReponseStatus;
-
-//Reponse Message returns "Queued" if successful, returns the message if unsuccessful delivery
-string responsemessage = mac.ReponseMessage;
-```
 
 #### SMS
 ```csharp
@@ -95,6 +78,23 @@ mac.SendMMSAsync(mms).Wait();
 
 return mms.IsQueued;
 ```
+#### The Messaging API Client (MAC)
+MAC is the main broker for the HttpClient. MAC does the work of sending messages, and communicating with the Telnyx Rest API.
+
+MAC implements a static HttpClient to use for the entire application. You can instantiate the MessagingAPIClient by directly adding the x-secret.
+
+The MAC will add the secret to the header every time a new request is made. So you can change the secret for the same instance.
+
+```csharp
+//Get the full Http response from the API call
+string httpstatus = mac.HttpResponse.StatusCode.ToString(); //returns OK for 200
+
+//Reponse Status returns the status. This field is used to determine the Message.IsQueued value.
+string responsemessage = mac.ReponseStatus;
+
+//Reponse Message returns "Queued" if successful, returns the message if unsuccessful delivery
+string responsemessage = mac.ReponseMessage;
+```
 
 #### Accepted Response Payload
 ```csharp
@@ -110,9 +110,8 @@ RejectedResponsePayload rrp = RejectedResponsePayload.FromJson(mac.ReponseString
 string errormessage = err.Message;
 ```
 
-#### Rejected Response Payload
+#### Master Detail Record
 ```csharp
-//Get the Master Detail Record for a message
 MasterDetailRecord mdr = await trc.GetMasterDetailRecord(msgid);
 return mdr;
 ```
