@@ -113,7 +113,7 @@ string errormessage = err.Message;
 #### Master Detail Record
 ```csharp
 MessageDeliveryRecord mdr = await trc.GetMessageDeliveryRecord(msgid);
-return mdr;
+return mdr.Errors;
 ```
 
 

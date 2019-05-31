@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace Telnyx.SharpNyx
 {
@@ -40,6 +41,8 @@ namespace Telnyx.SharpNyx
         public string Currency { get; set; }
         [JsonProperty("type")]
         public string Type { get; set; }
+        [JsonProperty("errors")]
+        public IEnumerable<MessageDeliveryError> Errors { get; set; }
         [JsonProperty("carrier")]
         public string Carrier { get; set; }
         [JsonProperty("line_type")]
@@ -64,8 +67,16 @@ namespace Telnyx.SharpNyx
         [JsonProperty("num_bytes")]
         public int Size { get; set; } //In Bytes
         [JsonProperty("bytes_hash")]
-        public string ByteHash { get; set; }
+        public string HashBytes { get; set; }
         [JsonProperty("parts")]
         public int Parts { get; set; }
+    }
+
+    public class MessageDeliveryError
+    {
+        [JsonProperty("code")]
+        public string Code { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 }

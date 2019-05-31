@@ -6,9 +6,9 @@ namespace Telnyx.SharpNyx
         [JsonProperty("code")]
         public string Code { get; set; }
         [JsonProperty("success")]
-        public string Success { get; set; }
+        public bool Success { get; set; }
         [JsonProperty("status")]
-        public string Status { get; set; }
+        public int Status { get; set; }
         [JsonProperty("message")]
         public string Message { get; set; }
         [JsonProperty("url")]

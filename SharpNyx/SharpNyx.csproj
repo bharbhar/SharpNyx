@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Telnyx</AssemblyName>
     <PackageId>SharpNyx</PackageId>
-    <PackageVersion>0.2.2</PackageVersion>
+    <PackageVersion>0.2.3</PackageVersion>
     <Authors>Bharat Bhardwaj</Authors>
     <Copyright>2019 Bharat Bhardwaj</Copyright>
     <PackageIconUrl>https://telnyx.com/favicon.ico</PackageIconUrl>
@@ -15,15 +15,12 @@
     <PackageTags>API, Telephony, Telnyx, SMS, Communication</PackageTags>
     <Title>SharpNyx</Title>
     <Description>C# Telnyx API wrapper for .Net Core 2.1.</Description>
-    <PackageReleaseNotes>SharpNyx v0.2.2
-This release is a rename of MasterDetailRecord to MessageDeliveryRecord.
+    <PackageReleaseNotes>SharpNyx v0.2.3
+New features
 
--MessageDeliveryRecord (MDR)
--InboundMessage
+MessageDeliveryRecord now contains the errors field which can be used like IEnumberable&lt;MessageDeliveryError&gt;.
 
-Async Task method GetMessageDeliveryRecord(string) takes in the sms_id and returns the Master Detail Record for that message.
-
-Inbound message objects have been added so you can diretctly consume them via Json.</PackageReleaseNotes>
+Rejected Error contains a data type fixes for error code and success fields.</PackageReleaseNotes>
     <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
 
