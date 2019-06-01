@@ -110,7 +110,7 @@ RejectedResponsePayload rrp = RejectedResponsePayload.FromJson(mac.ReponseString
 string errormessage = err.Message;
 ```
 
-#### Master Detail Record
+#### Message Delivery Record
 ```csharp
 MessageDeliveryRecord mdr = await trc.GetMessageDeliveryRecord(msgid);
 return mdr.Errors;
