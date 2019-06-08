@@ -61,7 +61,7 @@ string url1 = "https://upload.wikimedia.org/wikipedia/commons/5/5f/HubbleDeepFie
 string url2 = "https://upload.wikimedia.org/wikipedia/commons/e/e1/M45map.jpg";
 
 Dictionary<string, string> dic1 = new Dictionary<string, string>();
-dic.Add(MediaUtype.Image, url1);
+dic1.Add(MediaUtype.Image, url1);
 
 Dictionary<string, string> dic2 = new Dictionary<string, string>();
 dic2.Add(MediaUtype.Image, url2);
