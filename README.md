@@ -94,6 +94,9 @@ string responsemessage = mac.ReponseStatus;
 
 //Reponse Message returns "Queued" if successful, returns the message if unsuccessful delivery
 string responsemessage = mac.ReponseMessage;
+
+//Grab System.Exception
+mac.MACException;
 ```
 
 #### Accepted Response Payload
@@ -112,6 +115,7 @@ string errormessage = err.Message;
 
 #### Message Delivery Record
 ```csharp
+//Returns null if there is an exception
 MessageDeliveryRecord mdr = await trc.GetMessageDeliveryRecord(msgid);
 return mdr.Errors;
 ```

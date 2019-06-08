@@ -22,6 +22,7 @@ namespace Telnyx.SharpNyx
         public string ReponseStatus { get; internal set; }
         public string ReponseMessage { get; internal set; }
         public HttpResponseMessage HttpResponse { get; internal set; }
+        public Exception MACException { get; internal set; }
 
         public MessagingAPIClient()
         {
@@ -71,7 +72,9 @@ namespace Telnyx.SharpNyx
             //Something wrong with the request
             catch (Exception x)
             {
-                throw x;
+                ReponseStatus = "Exception";
+                ReponseMessage = x.Message;
+                MACException = x;
             }
         }
 
@@ -94,7 +97,8 @@ namespace Telnyx.SharpNyx
             //Something wrong with the request
             catch (Exception x)
             {
-                throw x;
+                MACException = x;
+                return new MessageDeliveryRecord();
             }
         }
     }
