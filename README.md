@@ -21,7 +21,7 @@ using Telnyx.SharpNyx;
 MessagingAPIClient mac = new MessagingAPIClient("Q7EI8KGZJ3FrwBxMKq5zmID1");
 
 //Make a new SMS message
-SMS sms = new SMS("BUGSINC", "+16506003337", "Hello Telnyx");
+SMS sms = new SMS("FIREDATE", "+16506003337", "Hello World");
 
 //Call and wait for SendSMS to finish
 mac.SendSMSAsync(sms).Wait();
@@ -45,7 +45,7 @@ MessagingAPIClient mac = new MessagingAPIClient("M7RI1KGBJ8FrwBxTKq3zmIN1");
 
 string url = "https://nssdc.gsfc.nasa.gov/planetary/image/saturn.jpg";
 
-MMS mms = new MMS("BUGSINC", "+16508976777", new Dictionary<string, string> { { MediaUtype.Image, url } });
+MMS mms = new MMS("FIREDATE", "+16508976777", new Dictionary<string, string> { { MediaUtype.Image, url } });
 
 mac.SendMMSAsync(mms).Wait();
 
@@ -68,8 +68,8 @@ dic2.Add(MediaUtype.Image, url2);
 
 MMS mms = new MMS()
 {
-    FromPhoneNumber = "BUGSINC",
-    Subject = "Alcyone",
+    FromPhoneNumber = "FIREDATE",
+    Subject = "Deep Space",
     ToPhoneNumber = "+16508976777",
     MediaUrls = new List<Dictionary<string, string>>() { dic1, dic2 }
 };
