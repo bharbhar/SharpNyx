@@ -36,6 +36,8 @@ bool isq = sms.IsQueued;
 Message msg = new Message();
 msg.ToPhoneNumber = "+16506003337";
 msg.Body = "Hello Telnyx";
+
+mac.SendMessage(msg).Wait();
 ```
 
 #### Send Quick MMS
